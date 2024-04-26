@@ -253,6 +253,7 @@ export class Popper {
     fromTop = fromTop;
     fromLeft = fromLeft;
 
+    // We use the parseInt to fix a Chrome issue when dealing with decimal pixels in translate3d
     let transformText = `translate3d(${parseInt(fromLeft)}px, ${parseInt(fromTop)}px, 0)`;
 
     DomUtils.setStyle(this.$popperEle, 'transform', transformText);
@@ -295,6 +296,7 @@ export class Popper {
         }
       }
 
+      // We use the parseInt to fix a Chrome issue when dealing with decimal pixels in translate3d
       DomUtils.setStyle(this.$arrowEle, 'transform', `translate3d(${parseInt(arrowLeft)}px, ${parseInt(arrowTop)}px, 0) ${rotateText}`);
     }
 
@@ -322,6 +324,7 @@ export class Popper {
     this.enterDelayTimeout = setTimeout(() => {
       let left = DomUtils.getData(this.$popperEle, 'left');
       let top = DomUtils.getData(this.$popperEle, 'top');
+      // We use the parseInt to fix a Chrome issue when dealing with decimal pixels in translate3d
       let transformText = `translate3d(${parseInt(left)}px, ${parseInt(top)}px, 0)`;
       let showDuration = this.showDuration;
 
@@ -351,6 +354,7 @@ export class Popper {
 
     this.exitDelayTimeout = setTimeout(() => {
       if (this.$popperEle) {
+        // We use the parseInt to fix a Chrome issue when dealing with decimal pixels in translate3d
         let left = parseInt(DomUtils.getData(this.$popperEle, 'fromLeft'));
         let top = parseInt(DomUtils.getData(this.$popperEle, 'fromTop'));
         let transformText = `translate3d(${left}px, ${top}px, 0)`;
@@ -380,6 +384,7 @@ export class Popper {
     let top = parseInt(DomUtils.getData(this.$popperEle, 'top'));
 
     DomUtils.show(this.$popperEle, 'inline-flex');
+    // We use the parseInt to fix a Chrome issue when dealing with decimal pixels in translate3d
     DomUtils.setStyle(this.$popperEle, 'transform', `translate3d(${left}px, ${top}px, 0)`);
   }
 }
